@@ -24,8 +24,44 @@ namespace ExpensesVisualizer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new expenses().Show();
-            this.Hide();
+            // if there is a instance of expenses display an error message
+            if (Expenses.instance != null)
+            {
+                MessageBox.Show("You can edit the info you inputed in Edit Expenses");
+            }else
+            {
+                new Expenses().Show();
+                this.Hide();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // if there is not an instance of expenses display an error message
+            if (Expenses.instance == null)
+            {
+                MessageBox.Show("You must enter expenses before you can view them");
+            }
+            else
+            {
+                new PieChartGenerator().Show();
+                this.Hide();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // if there is not an instance of expenses display an error message
+            if (Expenses.instance == null)
+            {
+                MessageBox.Show("You must enter expenses before you can edit them");
+            }
+            else
+            {
+                new editExpenses().Show();
+                this.Hide();
+            }
+
         }
     }
 }
