@@ -36,77 +36,82 @@ namespace ExpensesVisualizer
         private void button1_Click(object sender, EventArgs e)
         {
 
-            // make sure user enters a number    
-            if (!double.TryParse(housePaymentsinput.Text, out housePayments))
+            // from the input, check if the user entered a valid number and not a string
+            // if the user entered a string, clear the input and focus on the input
+            // if the user entered a negative number, clear the input and focus on the input
+            // if the user entered a valid number, set the variable to the input
+            // if the user did not enter a number, set the variable to 0
+            if (housePaymentsinput.Text == "" || !double.TryParse(housePaymentsinput.Text, out housePayments) || Convert.ToDouble(housePaymentsinput.Text) < 0)
             {
-                MessageBox.Show("Please enter a number for house payments");
+                MessageBox.Show("Please enter a valid number for House Payments");
                 housePaymentsinput.Clear();
                 housePaymentsinput.Focus();
                 return;
             }
-            if (!double.TryParse(carPaymentsInput.Text, out carPayments))
+            if (carPaymentsInput.Text == ""  || !double.TryParse(carPaymentsInput.Text, out carPayments) || Convert.ToDouble(carPaymentsInput.Text) < 0)
             {
-                MessageBox.Show("Please enter a number for car payments");
+                MessageBox.Show("Please enter a valid number for Car Payments");
                 carPaymentsInput.Clear();
                 carPaymentsInput.Focus();
                 return;
             }
-            if (!double.TryParse(utilitiesInput.Text, out utilities))
+            if (utilitiesInput.Text == ""  || !double.TryParse(utilitiesInput.Text, out carPayments) || Convert.ToDouble(utilitiesInput.Text) < 0)
             {
-                MessageBox.Show("Please enter a number for utilities");
+                MessageBox.Show("Please enter a valid number for Utilities");
                 utilitiesInput.Clear();
                 utilitiesInput.Focus();
                 return;
             }
-            if (!double.TryParse(foodInput.Text, out food))
+            if (foodInput.Text == ""  || !double.TryParse(foodInput.Text, out carPayments) || Convert.ToDouble(foodInput.Text) < 0) 
             {
-                MessageBox.Show("Please enter a number for food");
+                MessageBox.Show("Please enter a valid number for Food");
                 foodInput.Clear();
                 foodInput.Focus();
                 return;
             }
-            if (!double.TryParse(clothingInput.Text, out clothing))
+            if (clothingInput.Text == ""  || !double.TryParse(clothingInput.Text, out clothing) || Convert.ToDouble(clothingInput.Text) < 0)
             {
-                MessageBox.Show("Please enter a number for clothing");
+                MessageBox.Show("Please enter a valid number for Clothing");
                 clothingInput.Clear();
                 clothingInput.Focus();
                 return;
             }
-            if (!double.TryParse(medicalInsurancelnput.Text, out medicalInsurance))
+            if (medicalInsurancelnput.Text == "" || !double.TryParse(medicalInsurancelnput.Text, out carPayments) || Convert.ToDouble(medicalInsurancelnput.Text) < 0)
             {
-                MessageBox.Show("Please enter a number for medical insurance");
+                MessageBox.Show("Please enter a valid number for Medical Insurance");
                 medicalInsurancelnput.Clear();
                 medicalInsurancelnput.Focus();
                 return;
             }
-            if (!double.TryParse(homeInsuranceInput.Text, out homeInsurance))
+            if (homeInsuranceInput.Text == "" || !double.TryParse(homeInsuranceInput.Text, out carPayments) || Convert.ToDouble(homeInsuranceInput.Text) < 0)
             {
-                MessageBox.Show("Please enter a number for home insurance");
+                MessageBox.Show("Please enter a valid number for Home Insurance");
                 homeInsuranceInput.Clear();
                 homeInsuranceInput.Focus();
                 return;
             }
-            if (!double.TryParse(carInsuranceInput.Text, out carInsurance))
+            if (carInsuranceInput.Text == "" || !double.TryParse(carInsuranceInput.Text, out carPayments) || Convert.ToDouble(carInsuranceInput.Text) < 0)
             {
-                MessageBox.Show("Please enter a number for car insurance");
+                MessageBox.Show("Please enter a valid number for Car Insurance");
                 carInsuranceInput.Clear();
                 carInsuranceInput.Focus();
                 return;
             }
-            if (!double.TryParse(entertanmentInput.Text, out entertainment))
+            if (entertanmentInput.Text == "" || !double.TryParse(entertanmentInput.Text, out carPayments) || Convert.ToDouble(entertanmentInput.Text) < 0)
             {
-                MessageBox.Show("Please enter a number for entertainment");
+                MessageBox.Show("Please enter a valid number for Entertainment");
                 entertanmentInput.Clear();
                 entertanmentInput.Focus();
                 return;
             }
-            if (!double.TryParse(miscellaneousInput.Text, out miscellaneous))
+            if (miscellaneousInput.Text == "" || !double.TryParse(miscellaneousInput.Text, out carPayments) || Convert.ToDouble(miscellaneousInput.Text) < 0)
             {
-                MessageBox.Show("Please enter a number for miscellaneous");
+                MessageBox.Show("Please enter a valid number for Miscellaneous");
                 miscellaneousInput.Clear();
                 miscellaneousInput.Focus();
                 return;
             }
+
 
             //check if the user entered a value for each expense
             Expenses.instance.housePayments = housePaymentsinput.Text == "" ? 0 : Convert.ToDouble(housePaymentsinput.Text);
@@ -123,13 +128,10 @@ namespace ExpensesVisualizer
             this.Hide();
 
         }
-        public void calculateYearlyExpenses()
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //if the user clicks the back button, go back to the menu and not create a instance
             new Menu().Show();
             this.Hide();
         }
